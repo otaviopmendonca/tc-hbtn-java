@@ -13,10 +13,4 @@ public class Numero {
             System.out.println(a + " / " + b + " = " + resultado);
         }
     }
-    public static void main(String[] args) {
-        // Exemplos de uso:
-        Numero.dividir(4, 3);
-        Numero.dividir(9, 0);
-        Numero.dividir(10, 2);
-    }
 }
