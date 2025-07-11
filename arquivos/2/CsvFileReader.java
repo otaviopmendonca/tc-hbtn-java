@@ -6,17 +6,13 @@ public class CsvFileReader {
 
     public static void main(String[] args) {
         String csvFile = "funcionarios.csv";
-        String line = "";
-        String cvsSplitBy = ","; // Separador CSV
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
+            String line;
 
-            // Pular a linha do cabeçalho
-            br.readLine();
-
-            while ((line = br.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 // Usa vírgula como separador
-                String[] funcionario = line.split(cvsSplitBy);
+                String[] funcionario = line.split(",");
 
                 System.out.println("Funcionário: " + funcionario[0]);
                 System.out.println("Idade: " + funcionario[1]);
@@ -24,10 +20,10 @@ public class CsvFileReader {
                 System.out.println("Salarial: " + funcionario[3]);
                 System.out.println("------------------------");
             }
-            System.out.println("Leitura do arquivo concluída.");
 
+            System.out.println("Leitura do arquivo concluída.");
         } catch (IOException e) {
-            System.err.println("Erro ao ler o arquivo CSV: " + e.getMessage());
+            System.out.println("Erro ao ler o arquivo CSV: " + e.getMessage());
         }
     }
 }
