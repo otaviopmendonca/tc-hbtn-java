@@ -36,9 +36,9 @@ public class GerenciamentoDeContatos {
 
     // Exibe todos os contatos
     public void exibirContatos() {
-        // Ordenar por nome (opcional, mas deixa igual ao exemplo)
+        // Ordenar os nomes dos contatos em ordem alfabética
         List<String> nomes = new ArrayList<>(contatos.keySet());
-        Collections.sort(nomes);
+        Collections.sort(nomes); // <-- esta linha garante a ordem correta
 
         for (String nome : nomes) {
             System.out.println("Nome: " + nome);
