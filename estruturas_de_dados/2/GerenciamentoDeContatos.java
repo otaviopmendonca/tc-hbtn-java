@@ -1,14 +1,16 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class GerenciamentoDeContatos {
     private Map<String, Contato> contatos;
-    private Set<String> todosEmails;
+
 
     // Construtor
     public GerenciamentoDeContatos() {
-        contatos = new HashMap<>(); // ordem alfabética será feita manualmente
-        todosEmails = new HashSet<>();
+        contatos = new HashMap<>();
     }
+
 
     // Adiciona um novo contato
     public void adicionarContato(String nome, String telefone, String email) {
@@ -17,31 +19,18 @@ public class GerenciamentoDeContatos {
             return;
         }
 
-        if (todosEmails.contains(email)) {
-            System.out.println("Erro: Email " + email + " já está sendo utilizado!");
-            return;
-        }
-
-        Contato contato = new Contato();
-        contato.adicionarTelefone(telefone);
-
-        if (contato.adicionarEmail(email)) {
-            todosEmails.add(email);
-            contatos.put(nome, contato);
-            System.out.println("Contato " + nome + " adicionado com sucesso!");
-        } else {
-            System.out.println("Erro ao adicionar o contato " + nome + ".");
-        }
+        Contato novoContato = new Contato();
+        novoContato.adicionarTelefone(telefone);
+        novoContato.adicionarEmail(email);
+        contatos.put(nome, novoContato);
+        System.out.println("Contato " + nome + " adicionado com sucesso!");
     }
 
-    // Exibe todos os contatos em ordem alfabética
+    // Exibe todos os contatos
     public void exibirContatos() {
-        List<String> nomes = new ArrayList<>(contatos.keySet());
-        Collections.sort(nomes); // garante ordem alfabética
-
-        for (String nome : nomes) {
-            System.out.println("Nome: " + nome);
-            contatos.get(nome).exibirContato();
+        for (Map.Entry<String, Contato> entry : contatos.entrySet()) {
+            System.out.println("Nome: " + entry.getKey());
+            entry.getValue().exibirContato();
             System.out.println("-------------------------------");
         }
     }
@@ -59,8 +48,7 @@ public class GerenciamentoDeContatos {
     // Remove um contato pelo nome
     public void removerContato(String nome) {
         if (contatos.containsKey(nome)) {
-            Contato removido = contatos.remove(nome);
-            todosEmails.removeAll(removido.getEmails());
+            contatos.remove(nome);
             System.out.println("Contato " + nome + " removido com sucesso!");
         } else {
             System.out.println("Contato " + nome + " não encontrado.");
@@ -70,30 +58,36 @@ public class GerenciamentoDeContatos {
     public static void main(String[] args) {
         GerenciamentoDeContatos gestao = new GerenciamentoDeContatos();
 
+
         // Adicionando contatos
         gestao.adicionarContato("Carlos", "1234-5678", "carlos@email.com");
         gestao.adicionarContato("Maria", "8765-4321", "maria@email.com");
         gestao.adicionarContato("Ana", "1122-3344", "ana@email.com");
         gestao.adicionarContato("Carlos", "1234-5678", "carlos@email.com"); // Tentando duplicar
 
+
         // Exibindo todos os contatos
-        System.out.println("Exibindo todos os contatos:");
+        System.out.println("\nExibindo todos os contatos:");
         gestao.exibirContatos();
 
+
         // Buscando um contato
-        System.out.println("Buscando contato 'Maria':");
+        System.out.println("\nBuscando contato 'Maria':");
         gestao.buscarContato("Maria");
 
+
         // Removendo um contato
-        System.out.println("Removendo contato 'Carlos':");
+        System.out.println("\nRemovendo contato 'Carlos':");
         gestao.removerContato("Carlos");
 
+
         // Tentando remover um contato inexistente
-        System.out.println("Tentando remover contato 'João' que não existe:");
+        System.out.println("\nTentando remover contato 'João' que não existe:");
         gestao.removerContato("João");
 
+
         // Exibindo todos os contatos após remoções
-        System.out.println("Exibindo todos os contatos após remoções:");
+        System.out.println("\nExibindo todos os contatos após remoções:");
         gestao.exibirContatos();
     }
 }
