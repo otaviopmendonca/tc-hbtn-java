@@ -6,7 +6,7 @@ public class GerenciamentoDeContatos {
 
     // Construtor
     public GerenciamentoDeContatos() {
-        contatos = new LinkedHashMap<>(); // Mantém a ordem de inserção
+        contatos = new HashMap<>(); // ordem alfabética será feita manualmente
         todosEmails = new HashSet<>();
     }
 
@@ -34,9 +34,12 @@ public class GerenciamentoDeContatos {
         }
     }
 
-    // Exibe todos os contatos na ordem de inserção
+    // Exibe todos os contatos em ordem alfabética
     public void exibirContatos() {
-        for (String nome : contatos.keySet()) {
+        List<String> nomes = new ArrayList<>(contatos.keySet());
+        Collections.sort(nomes); // garante ordem alfabética
+
+        for (String nome : nomes) {
             System.out.println("Nome: " + nome);
             contatos.get(nome).exibirContato();
             System.out.println("-------------------------------");
