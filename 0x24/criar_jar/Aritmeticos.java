@@ -1,4 +1,4 @@
-package holbertonschool.matematica;
+package com.holbertonschool.matematica;
 
 public class Aritmeticos {
 
