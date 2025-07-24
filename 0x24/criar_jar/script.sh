@@ -2,7 +2,7 @@
 
 # Caminho para o arquivo Java
 JAVA_FILE="Aritmeticos.java"
-PACKAGE_DIR="holbertonschool/matematica"
+PACKAGE_DIR="com/holbertonschool/matematica"
 BUILD_DIR="build"
 
 # Criar diretório build se não existir
