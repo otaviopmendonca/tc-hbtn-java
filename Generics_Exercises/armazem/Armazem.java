@@ -8,5 +8,13 @@ public class Armazem<T> implements Armazenavel<T> {
         inventario = new HashMap<>();
     }
 
-    public void adicionarAoInventario()
+    @Override
+    public void adicionarAoInventario(String nome, T valor) {
+        inventario.put(nome, valor);
+    }
+
+    @Override
+    public T obterDoInventario(String nome) {
+        return inventario.get(nome);
+    }
 }

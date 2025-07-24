@@ -4,4 +4,3 @@ public interface Armazenavel<T> {
 
     public T obterDoInventario(String nome);
 }
-
