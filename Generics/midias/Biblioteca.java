@@ -11,9 +11,7 @@ public class Biblioteca<T extends Midia> { // T deve ser Midia ou uma subclasse 
     public void adicionarMidia(T midia) {
         if (midia != null) { //midia existe
             listaMidias.add(midia);
-            System.out.println("Mídia '" + midia.getNome() + "' adicionada à biblioteca.");
         } else { //midia nao existe
-            System.out.println("Não é possível adicionar uma mídia nula.");
         }
     }
 
