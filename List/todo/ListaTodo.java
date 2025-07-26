@@ -10,6 +10,11 @@ public class ListaTodo {
     }
 
     public void adicionarTarefa(Tarefa tarefa) {
+
+        if (tarefa.getDescricao() == null || tarefa.getDescricao().trim().isEmpty()) {
+            throw new IllegalArgumentException("Descricao de tarefa invalida");
+        }
+        
         for (Tarefa t : tarefas) { // t é a ja existente e tarefa é a nova
 
             if (t.getIdentificador() == tarefa.getIdentificador()) { // se identificador novo for igual ao já existente
