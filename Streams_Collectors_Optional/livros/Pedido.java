@@ -20,7 +20,7 @@ public class Pedido {
         return produtos;
     }
 
-    public Cliente getClientes() {
+    public Cliente getCliente() {
         return cliente;
     }
 }
