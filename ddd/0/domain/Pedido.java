@@ -24,22 +24,28 @@ public class Pedido {
 
 
     public void adicionarProduto(Produto produto) {
-        //implementar
+        this.produtos.add(produto);
     }
 
 
     public void removerProduto(Produto produto) {
-        //implementar
+        this.produtos.remove(produto);
     }
 
 
     public void pagar() {
-        //implementar
+        if (this.produtos.isEmpty()) {
+            throw new IllegalStateException("Pedido vazio.");
+        }
+        this.status = StatusPedido.PAGO;
     }
 
 
     public void cancelar() {
-        //implementar
+        if (this.status == StatusPedido.PAGO) {
+            throw new IllegalStateException("Pedido já foi pago, impossível cancelar.");
+        }
+        this.status = StatusPedido.CANCELADO;
     }
 
 
